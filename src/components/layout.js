@@ -25,7 +25,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <main className="bg-gray-900 min-h-screen text-gray-500 leading-relaxed max-w-2xl px-6 sm:pr-20 sm:pl-20 py-6">
+      <div className="bg fixed right-0 top-0 bottom-0 w-3/5 h-screen bg-cover bg-no-repeat" />
+      <main className="z-10 p-fixed bg-gray-900 min-h-screen text-gray-500 leading-relaxed max-w-2xl px-6 sm:pr-20 sm:pl-20 py-6">
         {children}
       </main>
     </>
