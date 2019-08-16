@@ -10,6 +10,7 @@ import twitter from "../images/twitter.svg"
 import linkedin from "../images/linkedin.svg"
 import medium from "../images/medium.svg"
 import draftbit from "../images/draftbit.svg"
+import instagram from "../images/instagram.svg"
 
 const Talk = ({ year, title, venue, youtubeUrl, url, slideUrl }) => {
   return (
@@ -24,6 +25,8 @@ const Talk = ({ year, title, venue, youtubeUrl, url, slideUrl }) => {
 
 function getIcon(name) {
   switch (name) {
+    case "Instagram":
+      return instagram
     case "Github":
       return github
     case "Medium":
