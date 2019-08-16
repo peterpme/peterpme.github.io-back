@@ -101,12 +101,13 @@ const IndexPage = ({ data }) => {
         </p>
         <p className="pb-3">
           I've started several companies and have learned a lot along the way.
-          Right now I'm working on helping teams build apps visually on a{" "}
+          Right now I'm working on a product helping teams build apps visually
+          called{" "}
+          <ExternalLink href="https://draftbit.com">Draftbit</ExternalLink>, a
           <ExternalLink href="https://ycombinator.com">
             Y-Combinator backed
           </ExternalLink>{" "}
-          company called{" "}
-          <ExternalLink href="https://draftbit.com">Draftbit</ExternalLink>.
+          company.
         </p>
         <p className="pb-3">
           I'm a highly energetic and driven leader, entrepreneur and speaker. I
