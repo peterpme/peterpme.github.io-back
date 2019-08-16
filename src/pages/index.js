@@ -101,16 +101,12 @@ const IndexPage = ({ data }) => {
         </p>
         <p className="pb-3">
           I've started several companies and have learned a lot along the way.
-          Right now I'm working on helping teams build apps visually on a
-          Y-Combinator backed company called{" "}
-          <ExternalLink
-            target="_blank"
-            className="border-b-2 border-gray-600 text-white"
-            href="https://draftbit.com"
-          >
-            Draftbit
-          </ExternalLink>
-          .
+          Right now I'm working on helping teams build apps visually on a{" "}
+          <ExternalLink href="https://ycombinator.com">
+            Y-Combinator backed
+          </ExternalLink>{" "}
+          company called{" "}
+          <ExternalLink href="https://draftbit.com">Draftbit</ExternalLink>.
         </p>
         <p className="pb-3">
           I'm a highly energetic and driven leader, entrepreneur and speaker. I
@@ -132,6 +128,35 @@ const IndexPage = ({ data }) => {
             <li className="mb-1">GraphQL</li>
           </ul>
         </p>
+      </Section>
+      <Section title="Community">
+        <p>
+          I wouldn't be able to get to where I am today if it wasn't for the
+          folks that believed in me. I like to pay it forward by donating time &
+          energy to building a real tech community in Chicago:
+        </p>
+        <ul className="mt-2">
+          <li className="mb-1">
+            <ExternalLink href="https://chicagojscamp.org">
+              Chicago JSCamp
+            </ExternalLink>
+          </li>
+          <li className="mb-1">
+            <ExternalLink href="https://chicagojs.org">
+              ChicagoJS Community
+            </ExternalLink>
+          </li>
+          <li className="mb-1">
+            <ExternalLink href="https://reason-conf.us">
+              Reason Conf US
+            </ExternalLink>
+          </li>
+          <li className="mb-1">
+            <ExternalLink href="http://www.chicagotechslack.com">
+              Chicago Tech Slack
+            </ExternalLink>
+          </li>
+        </ul>
       </Section>
       <Section title="Speaking & Appearances">
         <ul className="list-horizontal">
