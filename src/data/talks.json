@@ -57,6 +57,22 @@
     "visible": true
   },
   {
+    "id": "recPbj44zoTTD7kTH",
+    "year": "2019",
+    "title": "What It's Like Building a Business",
+    "venue": "UIUC City Scholars",
+    "createdAt": "2019-11-27T18:49:55.000Z",
+    "visible": true
+  },
+  {
+    "id": "rec97CkWaIyN2Gg4J",
+    "year": "2019",
+    "title": "Why building businesses is hard but lit at the same time",
+    "venue": "UIUC Forge",
+    "createdAt": "2019-11-27T18:50:04.000Z",
+    "visible": true
+  },
+  {
     "id": "rec2Ynf6T2GlJR5lz",
     "year": "2018",
     "title": "React & ReasonML: A Love Story",
