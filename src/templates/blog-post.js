@@ -12,13 +12,11 @@ export default function BlogPostTemplate({ data, pageContext }) {
 
   return (
     <Layout>
-      <SEO title={siteTitle} />
-      {post.frontmatter.title}
-      {post.frontmatter.date}
-
+      <SEO title={post.frontmatter.title} />
       <h1 className="text-3xl leading-tight text-gray-200 font-headline font-bold mb-0 pb-0">
-        {siteTitle}
+        {post.frontmatter.title}
       </h1>
+      <span className="block mb-2">{post.frontmatter.date}</span>
       <section dangerouslySetInnerHTML={{ __html: post.html }} />
       <nav>
         <ul
