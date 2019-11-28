@@ -5,6 +5,7 @@ module.exports = {
     author: `@peterpme`,
   },
   plugins: [
+    `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-json`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
