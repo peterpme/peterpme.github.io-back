@@ -1,16 +1,16 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import Image from "../components/image";
+import SEO from "../components/seo";
 
-import github from "../images/github.svg"
-import twitter from "../images/twitter.svg"
-import linkedin from "../images/linkedin.svg"
-import medium from "../images/medium.svg"
-import draftbit from "../images/draftbit.svg"
-import instagram from "../images/instagram.svg"
+import github from "../images/github.svg";
+import twitter from "../images/twitter.svg";
+import linkedin from "../images/linkedin.svg";
+import medium from "../images/medium.svg";
+import draftbit from "../images/draftbit.svg";
+import instagram from "../images/instagram.svg";
 
 const Talk = ({ year, title, venue, youtubeUrl, url, slideUrl }) => {
   return (
@@ -20,23 +20,23 @@ const Talk = ({ year, title, venue, youtubeUrl, url, slideUrl }) => {
       </span>
       {title}
     </li>
-  )
-}
+  );
+};
 
 function getIcon(name) {
   switch (name) {
     case "Instagram":
-      return instagram
+      return instagram;
     case "Github":
-      return github
+      return github;
     case "Medium":
-      return medium
+      return medium;
     case "Twitter":
-      return twitter
+      return twitter;
     case "LinkedIn":
-      return linkedin
+      return linkedin;
     default:
-      return draftbit
+      return draftbit;
   }
 }
 
@@ -45,11 +45,10 @@ function Ahref({ href, target = "_blank", children }) {
     <a
       target={target}
       className="border-b-2 border-gray-600 text-white"
-      href={href}
-    >
+      href={href}>
       {children}
     </a>
-  )
+  );
 }
 
 function Section({ title, children }) {
@@ -60,7 +59,7 @@ function Section({ title, children }) {
       </h2>
       {children}
     </section>
-  )
+  );
 }
 
 function SocialProfile({ id, name, url }) {
@@ -70,12 +69,13 @@ function SocialProfile({ id, name, url }) {
         <img className="w-5 h-5" src={getIcon(name)} />
       </a>
     </li>
-  )
+  );
 }
 
 const IndexPage = ({ data }) => {
-  const talks = data.talks && data.talks.nodes
-  const socialProfiles = data.socialProfiles && data.socialProfiles.nodes
+  const talks = data.talks && data.talks.nodes;
+  const socialProfiles = data.socialProfiles && data.socialProfiles.nodes;
+  const posts = data.allMarkdownRemark && data.allMarkdownRemark.edges;
   return (
     <Layout>
       <SEO title="Peter Piekarczyk" />
@@ -152,6 +152,28 @@ const IndexPage = ({ data }) => {
           </li>
         </ul>
       </Section>
+      <Section title="Recent Articles">
+        <ul>
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug;
+            return (
+              <li key={node.fields.slug} className="mb-4">
+                <Link
+                  className="text-white font-bold"
+                  style={{ boxShadow: `none` }}
+                  to={node.fields.slug}>
+                  {title}
+                </Link>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
       <Section title="Speaking & Appearances">
         <ul className="list-horizontal">
           {talks.map(talk => (
@@ -164,25 +186,23 @@ const IndexPage = ({ data }) => {
           The best way to contact me is through{" "}
           <Ahref
             className="border-b-2 border-gray-600 text-white"
-            href="https://twitter.com/peterpme"
-          >
+            href="https://twitter.com/peterpme">
             Twitter
           </Ahref>{" "}
           or by sending me an{" "}
           <Ahref
             className="border-b-2 border-gray-600 text-white"
-            href="mailto:peter@peterp.me"
-          >
+            href="mailto:peter@peterp.me">
             e-mail
           </Ahref>
           . I look forward to hearing from you.
         </p>
       </Section>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 export const query = graphql`
   query Home {
     socialProfiles: allSocialProfilesJson {
@@ -192,6 +212,7 @@ export const query = graphql`
         url
       }
     }
+
     talks: allTalksJson {
       nodes {
         slideUrl
@@ -202,5 +223,25 @@ export const query = graphql`
         youtubeUrl
       }
     }
+
+    allMarkdownRemark(
+      limit: 6
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+          }
+        }
+      }
+    }
   }
-`
+`;
+
