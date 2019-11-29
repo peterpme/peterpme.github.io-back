@@ -5,9 +5,13 @@ module.exports = {
     author: `@peterpme`,
   },
   plugins: [
-    `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-json`,
-    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -36,7 +40,41 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+              backgroundColor: `transparent`,
+              withWebp: true,
+              showCaptions: true,
+              quality: 80,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-code-titles`,
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+          {
+            resolve: `@weknow/gatsby-remark-twitter`,
+            options: {
+              align: `center`,
+            },
+          },
+          `gatsby-remark-external-links`,
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -53,6 +91,14 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: false,
+        develop: false,
+        tailwind: true,
+      },
+    },
   ],
-}
+};
 
