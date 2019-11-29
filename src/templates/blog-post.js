@@ -13,7 +13,7 @@ export default function BlogPostTemplate({ data, pageContext }) {
 
   return (
     <Layout>
-      <Link to="/" rel="home" className="text-2xl">
+      <Link to="/blog" rel="home" className="text-2xl">
         ←
       </Link>
       <SEO title={post.frontmatter.title} />
